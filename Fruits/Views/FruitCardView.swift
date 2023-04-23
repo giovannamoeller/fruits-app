@@ -26,6 +26,25 @@ struct FruitCardView: View {
         .foregroundColor(.white)
         .multilineTextAlignment(.center)
         .frame(maxWidth: 480)
+      
+      Button {
+        print("Exit the onboarding...")
+      } label: {
+        HStack {
+          Text("Start")
+            .font(.title3)
+          
+          Image(systemName: "arrow.right.circle")
+            .font(.title3)
+            //.imageScale(.large)
+        }
+        .foregroundColor(.white)
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .overlay (
+          Capsule().strokeBorder(Color.white, lineWidth: 1.5)
+        )
+      }
     }
     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
     .background(
@@ -37,7 +56,6 @@ struct FruitCardView: View {
     )
     .cornerRadius(16)
     .padding()
-    .shadow(radius: 30)
   }
 }
 
