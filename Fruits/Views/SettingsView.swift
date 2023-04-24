@@ -19,7 +19,6 @@ struct SettingsView: View {
         VStack(spacing: 20) {
           GroupBox {
             Divider().padding(.vertical, 4)
-            
             HStack(alignment: .center, spacing: 10) {
               Image("logo")
                 .resizable()
@@ -36,19 +35,30 @@ struct SettingsView: View {
           
           GroupBox {
             Divider().padding(.vertical, 4)
-            
             VStack(spacing: 20) {
-              
               Text("If you wish, you can restart the application by toggle the switch in this box. That way it starts the onboarding process and you will see the welcome screen again.")
                 .font(.footnote)
               
               Toggle("Restarted".uppercased(), isOn: $isOnboarding)
                 .bold()
                 .foregroundColor(.green)
-             
             }
           } label: {
             SettingsLabelView(labelText: "Customization", labelImage: "paintbrush")
+          }
+          
+          GroupBox {
+            Divider().padding(.vertical, 4)
+            VStack(spacing: 20) {
+              SettingsRowView(name: "Developer", content: "Giovanna Moeller")
+              SettingsRowView(name: "Designer")
+              SettingsRowView(name: "Compatibility", content: "iOS 14")
+              SettingsRowView(name: "Instagram", linkLabel: "Girl Coding", linkDestination: "instagram.com/girl.coding")
+              SettingsRowView(name: "SwiftUI", content: "4.0")
+              SettingsRowView(name: "Version", content: "1.1.0")
+            }
+          } label: {
+            SettingsLabelView(labelText: "Application", labelImage: "apps.iphone")
           }
 
         }
@@ -89,5 +99,32 @@ struct SettingsLabelView: View {
       Image(systemName: labelImage)
     }
     .fontWeight(.bold)
+  }
+}
+
+struct SettingsRowView: View {
+  
+  var name: String
+  var content: String? = nil
+  var linkLabel: String? = nil
+  var linkDestination: String? = nil
+  
+  var body: some View {
+    HStack {
+      Text(name)
+        .foregroundColor(.secondary)
+      
+      Spacer()
+      
+      if content != nil {
+        Text(content!)
+      } else if (linkLabel != nil && linkDestination != nil) {
+        Link(linkLabel!, destination: URL(string: "https://\(linkDestination!)")!)
+        Image(systemName: "arrow.up.right.square").foregroundColor(.pink)
+      }
+      else {
+        EmptyView()
+      }
+    }
   }
 }
