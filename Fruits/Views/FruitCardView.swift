@@ -29,6 +29,7 @@ struct FruitCardView: View {
       Text(fruit.headline)
         .font(.title3)
         .foregroundColor(.white)
+        .padding(.horizontal, 12)
         .multilineTextAlignment(.center)
         .frame(maxWidth: 480)
       
