@@ -70,7 +70,6 @@ struct FruitDetailView: View {
         }
         .navigationTitle(fruit.title)
         .navigationBarTitleDisplayMode(.inline)
-        .toolbar(.hidden)
       }
       .edgesIgnoringSafeArea(.top)
     }
