@@ -10,6 +10,7 @@ import SwiftUI
 struct FruitDetailView: View {
   
   var fruit: Fruit
+  @State private var isAnimating: Bool = false
   
   var body: some View {
     NavigationView {
@@ -22,7 +23,14 @@ struct FruitDetailView: View {
               .resizable()
               .scaledToFit()
               .shadow(color: .black.opacity(0.15), radius: 8, x: 6, y: 8)
-          }.frame(height: 440)
+              .scaleEffect(isAnimating ? 1 : 0.6)
+          }
+          .frame(height: 440)
+          .onAppear {
+            withAnimation(.easeOut(duration: 0.5)) {
+              isAnimating = true
+            }
+          }
           
           VStack (alignment: .leading, spacing: 20) {
             Text(fruit.title)
