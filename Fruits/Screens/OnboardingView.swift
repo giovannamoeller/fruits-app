@@ -13,8 +13,8 @@ struct OnboardingView: View {
     
   var body: some View {
     TabView {
-      ForEach(0..<showLimit, id: \.self) { index in
-        FruitCardView(fruit: fruitsData[index])
+      ForEach(fruitsData[0...showLimit]) { item in
+        FruitCardView(fruit: item)
       }
     }
     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
