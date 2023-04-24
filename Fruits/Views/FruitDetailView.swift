@@ -49,6 +49,19 @@ struct FruitDetailView: View {
             Text(fruit.description)
               .multilineTextAlignment(.leading)
             
+            HStack {
+              Text("Content source")
+              
+              Spacer()
+              
+              Link("Wikipedia", destination: URL(string: "https://wikipedia.com")!)
+              
+              Image(systemName: "arrow.up.right.square")
+            }
+            .font(.footnote)
+            .padding(.top, 10)
+            .padding(.bottom, 40)
+            
           }
           .padding(.horizontal, 20)
           .frame(maxWidth: 640, alignment: .center)
