@@ -11,7 +11,6 @@ struct SettingsView: View {
   
   @Environment(\.presentationMode) var presentationMode
   @AppStorage("isOnboarding") var isOnboarding: Bool = false
-  @State private var showOnboarding: Bool = false
   
   var body: some View {
     NavigationView {
@@ -39,10 +38,18 @@ struct SettingsView: View {
               Text("If you wish, you can restart the application by toggle the switch in this box. That way it starts the onboarding process and you will see the welcome screen again.")
                 .font(.footnote)
               
-              Toggle("Restarted".uppercased(), isOn: $isOnboarding)
-                .bold()
-                .foregroundColor(.green)
+              Toggle(isOn: $isOnboarding) {
+                Text("Restart".uppercased())
+                  .bold()
+                  .foregroundColor(.green)
+              }
+              .padding()
+              .background(
+                Color(UIColor.tertiarySystemBackground)
+                  .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+              )
             }
+            
           } label: {
             SettingsLabelView(labelText: "Customization", labelImage: "paintbrush")
           }
@@ -60,7 +67,7 @@ struct SettingsView: View {
           } label: {
             SettingsLabelView(labelText: "Application", labelImage: "apps.iphone")
           }
-
+          
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
