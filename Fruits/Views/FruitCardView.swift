@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct FruitCardView: View {
+  
+  @State private var isAnimating: Bool = false
+  
   var body: some View {
     VStack(spacing: 20) {
       Image("blueberry")
         .resizable()
         .scaledToFit()
         .shadow(color: .black.opacity(0.15), radius: 8, x: 6, y: 8)
+        .scaleEffect(isAnimating ? 1.0 : 0.6)
       
       Text("Blueberry")
         .font(.largeTitle)
@@ -56,6 +60,11 @@ struct FruitCardView: View {
     )
     .cornerRadius(16)
     .padding()
+    .onAppear {
+      withAnimation(.easeOut(duration: 0.5)) {
+        isAnimating = true
+      }
+    }
   }
 }
 
