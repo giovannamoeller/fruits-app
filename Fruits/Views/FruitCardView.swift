@@ -59,7 +59,7 @@ struct FruitCardView: View {
       )
     )
     .cornerRadius(16)
-    .padding()
+    .padding(.horizontal, 16)
     .onAppear {
       withAnimation(.easeOut(duration: 0.5)) {
         isAnimating = true
