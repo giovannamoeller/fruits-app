@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct OnboardingView: View {
+  
+  private let showLimit: Int = 5
     
   var body: some View {
     TabView {
-      ForEach(fruitsData) { fruit in
-        FruitCardView(fruit: fruit)
+      ForEach(0..<showLimit, id: \.self) { index in
+        FruitCardView(fruit: fruitsData[index])
       }
     }
     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
