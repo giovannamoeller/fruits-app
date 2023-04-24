@@ -10,6 +10,8 @@ import SwiftUI
 struct FruitCardView: View {
   
   @State private var isAnimating: Bool = false
+  @AppStorage("isOnboarding") var isOnboarding: Bool?
+
   let fruit: Fruit
   
   var body: some View {
@@ -34,7 +36,7 @@ struct FruitCardView: View {
         .frame(maxWidth: 480)
       
       Button {
-        print("Exit the onboarding...")
+        isOnboarding = false
       } label: {
         HStack {
           Text("Start")
