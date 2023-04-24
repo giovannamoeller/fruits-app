@@ -13,7 +13,7 @@ struct FruitDetailView: View {
   @State private var isAnimating: Bool = false
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       ScrollView(.vertical, showsIndicators: false) {
         VStack (alignment: .center, spacing: 20) {
           
